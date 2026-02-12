@@ -106,29 +106,6 @@ class ApiService {
     );
   }
 
-  // Mentor Applications
-  async submitMentorApplication(data: {
-    role: 'student' | 'teacher';
-    full_name: string;
-    github: string;
-    branch?: string;
-    year?: string;
-    room_number?: string;
-    experience_years: number;
-    teaching_count: number;
-    project_url: string;
-    motivation: string;
-  }): Promise<{ id: number; message: string }> {
-    return this.fetchWithErrorHandling<{ id: number; message: string }>(
-      `${API_URL}/api/mentor-applications`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }
-    );
-  }
-
   // Contact Form
   async submitContact(data: {
     name: string;

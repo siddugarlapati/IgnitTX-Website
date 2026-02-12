@@ -11,7 +11,13 @@ export interface Roadmap {
   role: string;
   description: string;
   relevance: string;
+  duration?: string;
   steps: RoadmapStep[];
+  resources?: {
+    title: string;
+    url: string;
+    description: string;
+  }[];
 }
 
 export interface TechRequest {

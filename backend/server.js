@@ -14,8 +14,8 @@ const io = new Server(httpServer, {
 });
 
 // Initialize Supabase client
-const supabaseUrl = process.env.SUPABASE_URL || 'https://isrkbkrznjnirzihdzzr.supabase.co';
-const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlzcmtia3J6bmpuaXJ6aWhkenpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MzIwNDAsImV4cCI6MjA4NjMwODA0MH0.PxnUgb8TWpC6uQ4Kbo0_WlsCdg3WxdOUaThOHmfIY9U';
+const supabaseUrl = process.env.SUPABASE_URL || 'https://jwkaxzatydstkjbnqxcf.supabase.co';
+const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3a2F4emF0eWRzdGtqYm5xeGNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MTI3NTYsImV4cCI6MjA4NjQ4ODc1Nn0.V0XWdUpcxgUMRLrDyXGF6NYmVF-nXVXu0NAnrOuvC6o';
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -143,51 +143,6 @@ app.post('/api/class-applications', async (req, res) => {
   }
 });
 
-// Submit mentor application
-app.post('/api/mentor-applications', async (req, res) => {
-  try {
-    const {
-      role,
-      full_name,
-      github,
-      branch,
-      year,
-      room_number,
-      experience_years,
-      teaching_count,
-      project_url,
-      motivation
-    } = req.body;
-    
-    const { data, error } = await supabase
-      .from('mentor_applications')
-      .insert([{
-        role,
-        full_name,
-        github,
-        branch,
-        year,
-        room_number,
-        experience_years,
-        teaching_count,
-        project_url,
-        motivation
-      }])
-      .select()
-      .single();
-
-    if (error) throw error;
-    
-    res.status(201).json({ 
-      id: data.id,
-      message: 'Mentor application submitted successfully'
-    });
-  } catch (error) {
-    console.error('Error submitting mentor application:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // Submit contact form
 app.post('/api/contact', async (req, res) => {
   try {
@@ -207,6 +162,29 @@ app.post('/api/contact', async (req, res) => {
     });
   } catch (error) {
     console.error('Error submitting contact form:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Submit mentor application
+app.post('/api/mentor-applications', async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+    
+    const { data, error } = await supabase
+      .from('mentor_applications')
+      .insert([{ name, email, subject, message }])
+      .select()
+      .single();
+
+    if (error) throw error;
+    
+    res.status(201).json({ 
+      id: data.id,
+      message: 'Mentor application submitted successfully'
+    });
+  } catch (error) {
+    console.error('Error submitting mentor application:', error);
     res.status(500).json({ error: error.message });
   }
 });

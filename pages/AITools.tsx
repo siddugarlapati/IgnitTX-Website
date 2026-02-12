@@ -189,11 +189,10 @@ const AISynth: React.FC = () => {
 
             <div className="pt-12">
                <button 
-                 onClick={handleSynthesize}
-                 disabled={isSynthesizing}
-                 className="bg-white text-black px-16 py-5 rounded-full font-bold text-[11px] tracking-[0.4em] hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                 onClick={() => alert('🚀 Launching Soon!\n\nOur AI-powered backlog clearing tools are currently in development. Stay tuned for the beta release!')}
+                 className="bg-white text-black px-16 py-5 rounded-full font-bold text-[11px] tracking-[0.4em] hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 shadow-xl"
                >
-                 {isSynthesizing ? 'INITIALIZING_SYNTHESIS...' : 'ACCESS_BETA_V3'}
+                 LAUNCHING_SOON
                </button>
             </div>
           </div>

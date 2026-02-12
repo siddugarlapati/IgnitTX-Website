@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,13 +9,37 @@ interface LayoutProps {
 
 const Navbar: React.FC<{ currentPage: string; onNavigate: (page: string) => void }> = ({ currentPage, onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Handle scroll to show/hide navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        // Always show navbar at the top
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide navbar
+        setIsVisible(false);
+      } else {
+        // Scrolling up - show navbar
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const links = [
     { name: 'INDEX', id: 'home' },
     { name: 'ROADMAPS', id: 'roadmaps' },
-    { name: 'ON_DEMAND', id: 'ondemand' },
+    { name: 'ENGINEERING_LABS', id: 'ondemand' },
     { name: 'AI_SYNTH', id: 'aitools' },
-    { name: 'COMMUNITY', id: 'community' },
     { name: 'CONTACT', id: 'contact' },
   ];
 
@@ -25,16 +49,18 @@ const Navbar: React.FC<{ currentPage: string; onNavigate: (page: string) => void
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 py-4 md:py-8 pointer-events-none">
+    <nav className={`fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 py-4 md:py-8 pointer-events-none transition-transform duration-300 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center px-5 md:px-10 py-3.5 md:py-4 nav-blur rounded-full pointer-events-auto border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
         <div 
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => handleNavigate('home')}
         >
           <img 
-            src="/logo.png" 
+            src="/icon.svg" 
             alt="IgniteXT Logo" 
-            className="w-8 h-8 rounded-full transition-transform group-hover:scale-110 shrink-0 object-cover"
+            className="w-8 h-8 transition-transform group-hover:scale-110 shrink-0"
           />
           <span className="text-lg font-bold tracking-tight text-white font-heading whitespace-nowrap">IGNITE<span className="text-yellow-400">XT</span></span>
         </div>
@@ -122,7 +148,7 @@ const Footer: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }
         <ul className="space-y-4 text-white/30 text-[10px] font-black tracking-[0.2em]">
           <li onClick={() => onNavigate('home')} className="hover:text-white cursor-pointer transition-colors uppercase">Home Index</li>
           <li onClick={() => onNavigate('roadmaps')} className="hover:text-white cursor-pointer transition-colors uppercase">Pathfinder Roadmaps</li>
-          <li onClick={() => onNavigate('ondemand')} className="hover:text-white cursor-pointer transition-colors uppercase">On Demand Sessions</li>
+          <li onClick={() => onNavigate('ondemand')} className="hover:text-white cursor-pointer transition-colors uppercase">Engineering Labs</li>
           <li onClick={() => onNavigate('aitools')} className="hover:text-white cursor-pointer transition-colors uppercase">AI Synthesis Lab</li>
         </ul>
       </div>
@@ -130,9 +156,9 @@ const Footer: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }
         <h4 className="font-bold mb-6 md:mb-8 text-yellow-400 text-[10px] tracking-[0.4em] uppercase">Foundation</h4>
         <ul className="space-y-4 text-white/30 text-[10px] font-black tracking-[0.2em]">
           <li onClick={() => onNavigate('about')} className="hover:text-white cursor-pointer transition-colors uppercase">Vision & Mission</li>
-          <li onClick={() => onNavigate('opensource')} className="hover:text-white cursor-pointer transition-colors uppercase">Open Source Policy</li>
-          <li onClick={() => onNavigate('community')} className="hover:text-white cursor-pointer transition-colors uppercase">Maintainers Lab</li>
+          <li onClick={() => onNavigate('opensource')} className="hover:text-white cursor-pointer transition-colors uppercase">Community</li>
           <li onClick={() => onNavigate('contribute')} className="hover:text-white cursor-pointer transition-colors uppercase">Join the Network</li>
+          <li onClick={() => onNavigate('contact')} className="hover:text-white cursor-pointer transition-colors uppercase">Contact Us</li>
         </ul>
       </div>
     </div>

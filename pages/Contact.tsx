@@ -50,9 +50,48 @@ const Contact: React.FC = () => {
           <h1 className="text-5xl md:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter mb-8 md:mb-10 font-heading">
             GET_<span className="italic text-yellow-400 text-glow-yellow">IN_TOUCH</span>
           </h1>
-          <p className="text-white/40 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">
-            Have questions about our programs? Want to collaborate? Reach out to the IgniteXT core team.
+          <p className="text-white/40 text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
+            Open for events, sessions, collaborations, and building real-world projects. We transform ideas into deployed solutions for B.Tech students and industry projects.
           </p>
+        </div>
+
+        {/* What We Offer Section */}
+        <div className="mb-16 grid md:grid-cols-3 gap-6">
+          <div className="p-6 border border-white/5 rounded-2xl bg-white/[0.01] hover:bg-white/[0.02] transition-all">
+            <div className="w-12 h-12 bg-yellow-400/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-lg mb-2">Events & Sessions</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              Host workshops, hackathons, and technical sessions at your college or online
+            </p>
+          </div>
+
+          <div className="p-6 border border-white/5 rounded-2xl bg-white/[0.01] hover:bg-white/[0.02] transition-all">
+            <div className="w-12 h-12 bg-yellow-400/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-lg mb-2">Build Projects</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              B.Tech projects, capstone projects, and real-time industry solutions from idea to deployment
+            </p>
+          </div>
+
+          <div className="p-6 border border-white/5 rounded-2xl bg-white/[0.01] hover:bg-white/[0.02] transition-all">
+            <div className="w-12 h-12 bg-yellow-400/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-lg mb-2">Collaborations</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              Partner with us for technical training, mentorship programs, and community initiatives
+            </p>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
@@ -72,7 +111,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-[9px] font-bold text-yellow-400 uppercase tracking-widest mb-1">Email</div>
-                    <div className="text-white font-medium">contact@ignitext.org</div>
+                    <div className="text-white font-medium">ignitext@gmail.com</div>
                   </div>
                 </div>
 
@@ -84,7 +123,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-[9px] font-bold text-yellow-400 uppercase tracking-widest mb-1">GitHub</div>
-                    <div className="text-white font-medium">github.com/ignitext</div>
+                    <div className="text-white font-medium">github.com/IgniteXT-vivek</div>
                   </div>
                 </div>
 
@@ -136,7 +175,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
                     className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white outline-none focus:border-yellow-400 transition-all font-medium"
-                    placeholder="John Doe"
+                    placeholder="Enter your name"
                   />
                 </div>
                 <div>
@@ -149,7 +188,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={e => setFormData({...formData, email: e.target.value})}
                     className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white outline-none focus:border-yellow-400 transition-all font-medium"
-                    placeholder="john@example.com"
+                    placeholder="your.email@example.com"
                   />
                 </div>
               </div>

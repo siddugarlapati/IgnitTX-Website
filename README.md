@@ -1,6 +1,20 @@
-# IgniteXT Platform - Real-time Learning Ecosystem
+# IgniteXT - Engineering Ecosystem Platform
 
-A production-grade platform for peer learning with real-time data synchronization, on-demand classes, and community engagement.
+An AI-powered open-source engineering ecosystem helping students clear backlogs, master core subjects, build real-world projects, and become industry-ready developers.
+
+## 🚢 Deploy to Vercel (Production Ready)
+
+**Quick Deploy:**
+```bash
+npm install -g vercel
+vercel --prod
+```
+
+📖 **Deployment Guides:**
+- `QUICK_DEPLOY.md` - 5-minute deployment guide
+- `DEPLOYMENT_GUIDE.md` - Detailed deployment instructions with troubleshooting
+
+---
 
 ## 🚀 Features
 

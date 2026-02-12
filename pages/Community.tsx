@@ -75,11 +75,13 @@ const Community: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12">
             {[1,2,3,4,5,6].map((i) => (
               <div key={i} className="text-center group cursor-pointer">
-                <div className="w-24 h-24 md:w-32 md:h-32 mx-auto bg-white/5 rounded-full mb-6 border border-white/10 group-hover:border-yellow-400 transition-all overflow-hidden grayscale group-hover:grayscale-0 relative">
+                <div className="w-24 h-24 md:w-32 md:h-32 mx-auto bg-white/5 rounded-full mb-6 border border-white/10 group-hover:border-yellow-400 transition-all overflow-hidden relative flex items-center justify-center">
                   <div className="absolute inset-0 bg-yellow-400/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <img src={`https://picsum.photos/seed/${i+40}/200`} alt="Avatar" className="w-full h-full object-cover p-2 rounded-full" />
+                  <svg className="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
                 </div>
-                <div className="font-bold text-white mb-1 tracking-tight text-sm md:text-base">NODE_MEMBER_{i}</div>
+                <div className="font-bold text-white mb-1 tracking-tight text-sm md:text-base">MEMBER_{i}</div>
                 <div className="text-[9px] text-yellow-400/50 uppercase font-black tracking-widest">Maintainer</div>
               </div>
             ))}
@@ -97,12 +99,12 @@ const Community: React.FC = () => {
               </div>
               <div className="md:w-1/2 grid grid-cols-2 gap-6">
                  <div className="p-6 md:p-8 border border-white/5 rounded-3xl bg-white/5 text-center">
-                    <div className="text-2xl md:text-3xl font-black text-yellow-400 mb-2">60+</div>
+                    <div className="text-2xl md:text-3xl font-black text-yellow-400 mb-2">50+</div>
                     <div className="text-[8px] font-bold text-white/30 uppercase tracking-[0.3em]">Active_Mentors</div>
                  </div>
                  <div className="p-6 md:p-8 border border-white/5 rounded-3xl bg-white/5 text-center">
-                    <div className="text-2xl md:text-3xl font-black text-white mb-2">1.2K</div>
-                    <div className="text-[8px] font-bold text-white/30 uppercase tracking-[0.3em]">Annual_Reviews</div>
+                    <div className="text-2xl md:text-3xl font-black text-white mb-2">800+</div>
+                    <div className="text-[8px] font-bold text-white/30 uppercase tracking-[0.3em]">Sessions_Held</div>
                  </div>
               </div>
             </div>

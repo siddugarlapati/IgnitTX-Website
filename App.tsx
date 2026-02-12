@@ -8,7 +8,6 @@ import OnDemand from './pages/OnDemand';
 import AITools from './pages/AITools';
 import OpenSource from './pages/OpenSource';
 import Contribute from './pages/Contribute';
-import Community from './pages/Community';
 import Contact from './pages/Contact';
 
 const App: React.FC = () => {
@@ -48,7 +47,6 @@ const App: React.FC = () => {
       case 'aitools': return <AITools />;
       case 'opensource': return <OpenSource />;
       case 'contribute': return <Contribute />;
-      case 'community': return <Community />;
       case 'contact': return <Contact />;
       default: return <Home onNavigate={navigate} />;
     }
