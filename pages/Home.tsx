@@ -22,7 +22,7 @@ const Home: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }) 
             EXECUTED.
           </h1>
           <p className="text-base md:text-xl lg:text-2xl text-white/40 max-w-4xl mx-auto mb-8 md:mb-12 font-light leading-relaxed reveal">
-            IgniteXT is an AI-powered open-source engineering ecosystem helping students clear backlogs, 
+            IgniteXT is an  engineering ecosystem helping students clear backlogs, 
             master core subjects, build real-world projects, and become industry-ready developers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center reveal">

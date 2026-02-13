@@ -217,18 +217,27 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-const PORT = process.env.PORT || 3001;
+// Export the app for Vercel
+export default app;
 
-httpServer.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📡 WebSocket server ready for real-time updates`);
-  console.log(`🗄️  Connected to Supabase`);
-});
+// Only listen if run directly
+if (process.env.NODE_ENV !== 'production' && process.argv[1] === new URL(import.meta.url).pathname) {
+  const PORT = process.env.PORT || 3001;
+  httpServer.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📡 WebSocket server ready for real-time updates`);
+    console.log(`🗄️  Connected to Supabase`);
+  });
+}
 
 // Graceful shutdown
 process.on('SIGINT', () => {
-  httpServer.close(() => {
-    console.log('Server closed');
+  if (httpServer.listening) {
+    httpServer.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  } else {
     process.exit(0);
-  });
+  }
 });
